@@ -120,16 +120,24 @@ function initializeVoting() {
     }
 }
 
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const voteLabels = document.querySelectorAll(".vote-label");
+
+    voteLabels.forEach(function(voteLabel) {
+        voteLabel.addEventListener("click", function() {
+            const candidateId = voteLabel.getAttribute("data-candidate-id");
+            window.location.href = `candidate_details.html?candidate_id=${candidateId}`;
+        });
+    });
+});
+
+
+
+
+
+
+
 // 启动投票系统
 initializeVoting();
-
-// 点击按钮时增加票数
-document.getElementById('voteButton1').addEventListener('click', () => {
-    votes1 += 1; // 每点击一次增加一定数量的票
-    animateVoteChange('votes1', 'candidateVotes1', votes1, 'progressBar1');
-});
-
-document.getElementById('voteButton2').addEventListener('click', () => {
-    votes2 += 1;
-    animateVoteChange('votes2', 'candidateVotes2', votes2, 'progressBar2');
-});
