@@ -1,4 +1,4 @@
-let votes1 = 2; // 初始票数（方楚辰）
+let votes1 = 213812; // 初始票数（方楚辰）
 let votes2 = 71432108; // 初始票数（TRUMP）
 const totalVotes = 200000000; // 总票数，用于计算进度条的百分比
 
@@ -68,7 +68,7 @@ function animateVoteChange(voteId, candidateVoteId, newVotes, progressId) {
         if (roundedVotes === newVotes) {
             clearInterval(interval);
         }
-    }, 1); // 每10ms更新一次
+    }, 10); // 每10ms更新一次
 }
 
 // 更新进度条
