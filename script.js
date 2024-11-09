@@ -1,4 +1,4 @@
-let votes1 = 1; // 初始票数（方楚辰）
+let votes1 = 2; // 初始票数（方楚辰）
 let votes2 = 71432108; // 初始票数（TRUMP）
 const totalVotes = 200000000; // 总票数，用于计算进度条的百分比
 
@@ -27,7 +27,7 @@ function getCookie(name) {
 
 // 删除 cookie
 function deleteCookie(name) {
-    document.cookie = name + '=; Max-Age=-99999999;';  
+    document.cookie = name + '=; Max-Age=20;';  
 }
 
 // 检查用户是否登录
