@@ -59,7 +59,7 @@ function login() {
         const user = JSON.parse(storedUser);
         if (user.password === password) {
             setCookie('loggedInUser', username, 7); // 设置登录状态 Cookie，有效期为7天
-            window.location.href = 'index2.html';    // 登录成功后跳转
+            window.location.href = 'index.html';    // 登录成功后跳转
         } else {
             document.getElementById('login-message').textContent = 'Invalid username or password. Please try again.';
         }
