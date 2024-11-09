@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Details</title>
+    <style>
+        /* Page styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        #candidate-details {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        #candidate-info h3 {
+            font-size: 1.8rem;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        #candidate-info p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .candidate-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .contact-info p,
+        .contact-info a {
+            font-size: 1rem;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="candidate-details">
+        <h2>Candidate Details</h2>
+        <img id="candidate-photo" class="candidate-photo" src="" alt="Candidate Photo">
+        <div id="candidate-info">
+            <!-- Candidate information will be loaded via JavaScript -->
+        </div>
+        <div class="contact-info" id="contact-info">
+            <!-- Additional contact information -->
+        </div>
+        <a href="index.html" class="back-button">Back to Vote Page</a>
+    </div>
+
+    <script>
+        // Retrieve candidate_id from URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const candidateId = urlParams.get("candidate_id");
+
+        // Display candidate information based on candidate_id
+        const candidateInfo = document.getElementById("candidate-info");
+        const candidatePhoto = document.getElementById("candidate-photo");
+        const contactInfo = document.getElementById("contact-info");
+
+        if (candidateId == "1") {
+            candidatePhoto.src = "images/candidate1.jpg"; // Candidate 1 photo
+            candidateInfo.innerHTML = `
+                <h3>Fang Chuchen</h3>
+                <p>Party: Taizhou No. 2 High School</p>
+                <p>Biography: Fang Chuchen is a candidate from Taizhou No. 2 High School, dedicated to educational reform and academic innovation.</p>
+            `;
+            contactInfo.innerHTML = `
+                <p>Email: <a href="mailto:fangchuchen@gmail.com">fangchuchen@gmail.com</a></p>
+                <p>Phone: +86 123-456-7890</p>
+                <p>Social Media: 
+                    <a href="https://twitter.com/fangchuchen" target="_blank">Twitter</a> |
+                    <a href="https://linkedin.com/in/fangchuchen" target="_blank">LinkedIn</a>
+                </p>
+            `;
+        } else if (candidateId == "2") {
+            candidatePhoto.src = "images/candidate2.jpg"; // Candidate 2 photo
+            candidateInfo.innerHTML = `
+                <h3>Donald J. Trump</h3>
+                <p>Party: Republican (R)</p>
+                <p>Biography: Donald J. Trump is a well-known candidate from the Republican Party, former president, and a proponent of the "America First" policy.</p>
+            `;
+            contactInfo.innerHTML = `
+                <p>Email: <a href="mailto:trump@gmail.com">trump@gmail.com</a></p>
+                <p>Phone: +1 987-654-3210</p>
+                <p>Social Media: 
+                    <a href="https://twitter.com/realDonaldTrump" target="_blank">Twitter</a> |
+                    <a href="https://linkedin.com/in/donaldtrump" target="_blank">LinkedIn</a>
+                </p>
+            `;
+        } else {
+            candidateInfo.innerHTML = "<p>Candidate not found.</p>";
+            candidatePhoto.style.display = "none"; // Hide photo if no candidate found
+        }
+    </script>
+</body>
+</html>

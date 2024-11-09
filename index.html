@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 U.S. Election</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>2024 U.S. Election</h1>
+        <p>Real-time election results</p>
+    </header>
+    <main>
+        <!-- 票数比拼部分 -->
+        <section id="vote-comparison">
+            <div class="vote-status">
+                <h2>Current number of votes</h2>
+                <div class="vote-bar">
+                    <div class="vote-bar-candidate">
+                        <span>方楚辰</span>
+                        <span class="vote-count" id="votes1">0</span>
+                    </div>
+                    <div class="vote-bar-candidate">
+                        <span>TRUMP</span>
+                        <span class="vote-count" id="votes2">71,432,108</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="candidates">
+            <h2>Elector</h2>
+            <ul>
+                <li class="candidate" id="candidate1">
+                    <img src="images/candidate1.jpg" alt="方楚辰">
+                    <div class="candidate-info">
+                        <h3>Fang Chuchen</h3>
+                        <p>Partisanship: Taizhou No. 2 Middle School</p>
+                        <p>Number of votes:  <span id="candidateVotes1">0</span></p>
+                        <div class="progress-bar" id="progressBar1"></div>
+                    </div>
+                    <span class="vote-label" data-candidate-id="1">Vote →</span>
+                </li>
+        
+                <li class="candidate" id="candidate2">
+                    <img src="images/candidate2.jpg" alt="DONALD · TRUMP">
+                    <div class="candidate-info">
+                        <h3>DONALD · TRUMP</h3>
+                        <p>Partisanship: Republican (R)</p>
+                        <p>Number of votes:  <span id="candidateVotes2">71,432,108</span></p>
+                        <div class="progress-bar" id="progressBar2"></div>
+                    </div>
+                    <span class="vote-label" data-candidate-id="2">Vote →</span>
+                </li>
+            </ul>
+        </section>
+        
+
+        <button id="voteButton1">Vote for Fang Chuchen</button>            <button id="voteButton2">Vote for TRUMP</button>
+
+
+        <!-- 热门投票部分 -->
+        <section id="other-votes">
+            <h2>Popular Polls</h2>
+            <div class="vote-item">
+                <span>Donald Trump (R)</span>
+                <span>71,432,108 votes</span>
+                <span>51.0%</span>
+            </div>
+            <div class="vote-item">
+                <span>Kamala Harris (D)</span>
+                <span>66,488,037 votes</span>
+                <span>47.5%</span>
+            </div>
+            <div class="vote-item">
+                <span>Jill Stein (G)</span>
+                <span>623,125 votes</span>
+                <span>0.5%</span>
+            </div>
+            <div class="vote-item">
+                <span>Robert Kennedy (I)</span>
+                <span>596,572 votes</span>
+                <span>0.4%</span>
+            </div>
+            <div class="vote-item">
+                <span>Chase Oliver (L)</span>
+                <span>561,393 votes</span>
+                <span>0.4%</span>
+            </div>
+            <div class="vote-item">
+                <span>Claudia De la Cruz</span>
+                <span>98,561 votes</span>
+                <span>0.1%</span>
+            </div>
+            <div class="vote-item">
+                <span>Cornel West</span>
+                <span>61,333 votes</span>
+                <span>0.0%</span>
+            </div>
+            <div class="vote-item">
+                <span>Randall Terry</span>
+                <span>39,831 votes</span>
+                <span>0.0%</span>
+            </div>
+            <div class="vote-item">
+                <span>Shiva Ayyadurai (I)</span>
+                <span>24,509 votes</span>
+                <span>0.0%</span>
+            </div>
+            <div class="vote-item">
+                <span>Peter Sonski</span>
+                <span>23,876 votes</span>
+                <span>0.0%</span>
+            </div>
+            <!-- 更多投票 -->
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
