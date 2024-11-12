@@ -74,6 +74,7 @@ function vote(candidateId) {
     if (!checkLogin()) return;
     if (hasVoted()) {
         alert("您已经投票过了。");
+        disableVoting();
         return;
     }
 
@@ -98,13 +99,8 @@ function disableVoting() {
 
 // 初始化投票系统
 function initializeVoting() {
-    if (hasVoted()) {
-        disableVoting();
-        alert("您已经投票过了。");
-    } else {
-        document.getElementById('voteButton1').addEventListener('click', () => vote('candidate1'));
-        document.getElementById('voteButton2').addEventListener('click', () => vote('candidate2'));
-    }
+    document.getElementById('voteButton1').addEventListener('click', () => vote('candidate1'));
+    document.getElementById('voteButton2').addEventListener('click', () => vote('candidate2'));
 }
 
 // 设置点击跳转事件
