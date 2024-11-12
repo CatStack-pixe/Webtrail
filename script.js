@@ -1,4 +1,4 @@
-let votes1 = 213812; // 初始票数（方楚辰）
+let votes1 = 413812; // 初始票数（方楚辰）
 let votes2 = 71432108; // 初始票数（TRUMP）
 const totalVotes = 200000000; // 总票数，用于计算进度条的百分比
 
