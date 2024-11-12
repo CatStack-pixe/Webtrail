@@ -1,6 +1,5 @@
 let votes1 = 413812; // 初始票数（方楚辰）
 let votes2 = 71432108; // 初始票数（TRUMP）
-const totalVotes = 200000000; // 总票数，用于计算进度条的百分比
 
 // 设置 Cookie
 function setCookie(name, value, days) {
@@ -25,17 +24,12 @@ function getCookie(name) {
     return null;
 }
 
-// 删除 cookie
-function deleteCookie(name) {
-    document.cookie = name + '=; Max-Age=20;';  
-}
-
 // 检查用户是否登录
 function checkLogin() {
     const loggedInUser = getCookie('loggedInUser');
     if (!loggedInUser) {
-        window.location.href = 'login.html'; // 如果未登录，跳转到登录页面
         alert("请先登录才能投票。");
+        window.location.href = 'login.html';
         return false;
     }
     return true;
@@ -46,29 +40,27 @@ function hasVoted() {
     return getCookie('hasVoted') === 'true';
 }
 
-// 实时更新的动画函数
+// 实时更新动画函数
 function animateVoteChange(voteId, candidateVoteId, newVotes, progressId) {
     const currentVotes = parseInt(document.getElementById(voteId).innerText.replace(/,/g, ''));
-    const increment = (newVotes - currentVotes) / 35; // 每次递增的票数
+    const increment = (newVotes - currentVotes) / 35;
     let current = currentVotes;
 
     let interval = setInterval(() => {
         current += increment;
         const roundedVotes = Math.round(current);
 
-        // 更新票数显示
         document.getElementById(voteId).innerText = roundedVotes.toLocaleString();
         document.getElementById(candidateVoteId).innerText = roundedVotes.toLocaleString();
 
-        // 更新进度条
-        const percentage = Math.round((roundedVotes / totalVotes) * 100);
+        const totalCurrentVotes = votes1 + votes2;
+        const percentage = Math.round((roundedVotes / totalCurrentVotes) * 100);
         updateProgressBar(progressId, percentage);
 
-        // 停止动画
         if (roundedVotes === newVotes) {
             clearInterval(interval);
         }
-    }, 10); // 每10ms更新一次
+    }, 10);
 }
 
 // 更新进度条
@@ -79,26 +71,21 @@ function updateProgressBar(id, percentage) {
 
 // 投票功能
 function vote(candidateId) {
-    if (!checkLogin()) return; // 未登录用户不允许投票
+    if (!checkLogin()) return;
     if (hasVoted()) {
         alert("您已经投票过了。");
-        return; // 已投票用户不允许再次投票
+        return;
     }
 
-    // 更新票数
-    let voteCountElement;
     if (candidateId === 'candidate1') {
         votes1 += 1;
-        voteCountElement = 'votes1';
+        animateVoteChange('votes1', 'candidateVotes1', votes1, 'progressBar1');
     } else if (candidateId === 'candidate2') {
         votes2 += 1;
-        voteCountElement = 'votes2';
+        animateVoteChange('votes2', 'candidateVotes2', votes2, 'progressBar2');
     }
 
-    animateVoteChange(voteCountElement, candidateId === 'candidate1' ? 'candidateVotes1' : 'candidateVotes2', candidateId === 'candidate1' ? votes1 : votes2, candidateId === 'candidate1' ? 'progressBar1' : 'progressBar2');
-
-    // 记录投票状态到 cookies
-    setCookie('hasVoted', 'true', 30); // 设置 cookie，有效期 30 天
+    setCookie('hasVoted', 'true', 30);
     disableVoting();
     alert("感谢您的投票！");
 }
@@ -112,7 +99,7 @@ function disableVoting() {
 // 初始化投票系统
 function initializeVoting() {
     if (hasVoted()) {
-        disableVoting(); // 已投票用户禁用投票按钮
+        disableVoting();
         alert("您已经投票过了。");
     } else {
         document.getElementById('voteButton1').addEventListener('click', () => vote('candidate1'));
@@ -120,8 +107,7 @@ function initializeVoting() {
     }
 }
 
-
-
+// 设置点击跳转事件
 document.addEventListener("DOMContentLoaded", function() {
     const voteLabels = document.querySelectorAll(".vote-label");
 
@@ -132,12 +118,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-
-
-
-
-
 
 // 启动投票系统
 initializeVoting();
